@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crestivo Talent | Supporting Employers. Empowering Candidates.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: premiumFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes premiumFade {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.7);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .accordion-content.open {
+            max-height: 250px;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC] text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- EXECUTIVE STICKY HEADER -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            <div class="flex flex-col cursor-pointer group" onclick="switchTab('home')">
+                <span
+                    class="text-2xl font-extrabold tracking-tighter text-[#0A192F] group-hover:text-slate-700 transition-colors">CRESTIVO
+                    TALENT</span>
+                <span class="text-[10px] tracking-widest text-slate-400 uppercase font-bold">Supporting Employers.
+                    Empowering Candidates.</span>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="menu-btn" class="lg:hidden text-[#0A192F] focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Menu Navigation -->
+            <nav
+                class="hidden lg:flex items-center space-x-7 font-bold text-[13px] uppercase tracking-wider text-slate-500">
+                <button onclick="switchTab('home')"
+                    class="nav-link hover:text-[#0A192F] transition-colors text-[#0A192F]" data-tab="home">Home</button>
+                <button onclick="switchTab('about')" class="nav-link hover:text-[#0A192F] transition-colors"
+                    data-tab="about">About Us</button>
+                <button onclick="switchTab('job-seekers')" class="nav-link hover:text-[#0A192F] transition-colors"
+                    data-tab="job-seekers">Job Seekers</button>
+                <button onclick="switchTab('employers')" class="nav-link hover:text-[#0A192F] transition-colors"
+                    data-tab="employers">Employers</button>
+                <button onclick="switchTab('opportunities')" class="nav-link hover:text-[#0A192F] transition-colors"
+                    data-tab="opportunities">Opportunities</button>
+                <button onclick="switchTab('faq')" class="nav-link hover:text-[#0A192F] transition-colors"
+                    data-tab="faq">FAQ</button>
+                <button onclick="switchTab('contact')"
+                    class="bg-[#0A192F] text-white px-6 py-3 rounded-full hover:bg-slate-800 transition-all shadow-md">Contact</button>
+            </nav>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 shadow-xl">
+            <button onclick="switchTab('home')"
+                class="block w-full text-left py-2 text-slate-700 font-bold uppercase text-xs tracking-wider">Home</button>
+            <button onclick="switchTab('about')"
+                class="block w-full text-left py-2 text-slate-700 font-bold uppercase text-xs tracking-wider">About
+                Us</button>
+            <button onclick="switchTab('job-seekers')"
+                class="block w-full text-left py-2 text-slate-700 font-bold uppercase text-xs tracking-wider">Job
+                Seekers</button>
+            <button onclick="switchTab('employers')"
+                class="block w-full text-left py-2 text-slate-700 font-bold uppercase text-xs tracking-wider">Employers</button>
+            <button onclick="switchTab('opportunities')"
+                class="block w-full text-left py-2 text-slate-700 font-bold uppercase text-xs tracking-wider">Opportunities</button>
+            <button onclick="switchTab('faq')"
+                class="block w-full text-left py-2 text-slate-700 font-bold uppercase text-xs tracking-wider">FAQ</button>
+            <button onclick="switchTab('contact')"
+                class="block w-full text-left py-2 text-slate-700 font-bold uppercase text-xs tracking-wider text-[#0A192F]">Contact</button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- ================= HOME PAGE ================= -->
+        <div id="home" class="tab-content active">
+            <!-- HERO SECTION (Asymmetric Layering) -->
+            <section class="relative py-12 lg:py-24 overflow-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-8 items-center relative">
+                    <div class="lg:col-span-6 z-20">
+                        <div class="glass-card p-8 sm:p-12 rounded-3xl shadow-xl space-y-6">
+                            <span class="text-xs font-bold tracking-widest text-slate-400 uppercase block">Crestivo
+                                Talent Support</span>
+                            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#0A192F] leading-tight">
+                                Supporting Employers.<br><span class="text-slate-400 italic font-light">Empowering
+                                    Candidates.</span></h1>
+                            <div class="space-y-4 text-slate-600 text-sm leading-relaxed">
+                                <p>We are a recruitment and staffing support organization committed to helping employers
+                                    connect with qualified candidates while assisting job seekers in discovering
+                                    meaningful career opportunities.</p>
+                                <p>Our team works closely with client organizations to support recruitment efforts
+                                    through candidate sourcing, communication, interview coordination, and hiring
+                                    support.</p>
+                                <p class="font-medium text-slate-800">Whether you are looking to grow your team or take
+                                    the next step in your career, Crestivo Talent is here to help create valuable
+                                    connections.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-4 pt-2">
+                                <button onclick="switchTab('opportunities')"
+                                    class="bg-[#0A192F] text-white px-6 py-3.5 rounded-xl text-sm font-bold shadow-md hover:bg-slate-800 transition-colors">Explore
+                                    Opportunities</button>
+                                <button onclick="switchTab('contact')"
+                                    class="border border-slate-300 text-slate-700 px-6 py-3.5 rounded-xl text-sm font-bold hover:bg-slate-50 transition-colors">Contact
+                                    Us</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="lg:col-span-7 lg:absolute lg:right-0 lg:top-0 h-[350px] sm:h-[500px] lg:h-full w-full z-10">
+                        <img src="assets/hero.png" alt="Professional office meeting"
+                            class="w-full h-full object-cover rounded-3xl shadow-lg">
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHO WE ARE SECTION (Overlapping Panels) -->
+            <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative h-[400px] rounded-3xl overflow-hidden shadow-md">
+                        <img src="assets/whoweare.png" alt="Professional office environment"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-6 bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm">
+                        <h2 class="text-3xl font-extrabold text-[#0A192F] tracking-tight">Who We Are</h2>
+                        <div class="w-12 h-1 bg-[#0A192F] rounded"></div>
+                        <p class="text-slate-600 leading-relaxed text-sm">Crestivo Talent is dedicated to building
+                            professional relationships between employers and job seekers throughout Ontario.</p>
+                        <p class="text-slate-600 leading-relaxed text-sm">We understand that successful recruitment
+                            depends on communication, transparency, and consistency. Our goal is to support both
+                            employers and candidates throughout the hiring process while maintaining a professional and
+                            respectful experience for everyone involved.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHY WORK WITH US SECTION (Modern Grid) -->
+            <section class="bg-slate-100 py-24 border-y border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center space-y-4 mb-16">
+                        <h2 class="text-3xl font-extrabold text-[#0A192F] tracking-tight">Why Work With Us</h2>
+                        <div class="w-12 h-1 bg-[#0A192F] mx-auto rounded"></div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div
+                            class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#0A192F]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-[#0A192F]">Professional Recruitment Support</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">We assist organizations with candidate
+                                sourcing, recruitment coordination, and hiring support.</p>
+                        </div>
+                        <div
+                            class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#0A192F]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-[#0A192F]">Candidate-Focused Process</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">We believe applicants deserve clear
+                                communication and transparency throughout every stage of recruitment.</p>
+                        </div>
+                        <div
+                            class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#0A192F]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-[#0A192F]">Employer Partnerships</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">We work with organizations seeking
+                                dependable individuals who can contribute positively to workplace environments.</p>
+                        </div>
+                        <div
+                            class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4 hover:shadow-md transition-shadow">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#0A192F]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-base text-[#0A192F]">Commitment To Integrity</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">We maintain a professional approach that
+                                prioritizes fairness, respect, and transparency.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OUR SERVICES SECTION -->
+            <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-4 mb-16">
+                    <h2 class="text-3xl font-extrabold text-[#0A192F] tracking-tight">Our Services</h2>
+                    <div class="w-12 h-1 bg-[#0A192F] mx-auto rounded"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div
+                        class="p-6 border border-slate-200/80 rounded-xl text-center font-semibold text-sm text-slate-700 bg-white shadow-sm hover:border-slate-300 transition-colors">
+                        Candidate Sourcing</div>
+                    <div
+                        class="p-6 border border-slate-200/80 rounded-xl text-center font-semibold text-sm text-slate-700 bg-white shadow-sm hover:border-slate-300 transition-colors">
+                        Recruitment Coordination</div>
+                    <div
+                        class="p-6 border border-slate-200/80 rounded-xl text-center font-semibold text-sm text-slate-700 bg-white shadow-sm hover:border-slate-300 transition-colors">
+                        Interview Scheduling</div>
+                    <div
+                        class="p-6 border border-slate-200/80 rounded-xl text-center font-semibold text-sm text-slate-700 bg-white shadow-sm hover:border-slate-300 transition-colors">
+                        Hiring Support</div>
+                    <div
+                        class="p-6 border border-slate-200/80 rounded-xl text-center font-semibold text-sm text-slate-700 bg-white shadow-sm hover:border-slate-300 transition-colors">
+                        Employer Partnerships</div>
+                    <div
+                        class="p-6 border border-slate-200/80 rounded-xl text-center font-semibold text-sm text-slate-700 bg-white shadow-sm hover:border-slate-300 transition-colors">
+                        Workforce Solutions</div>
+                </div>
+            </section>
+
+            <!-- LOCATIONS WE SUPPORT -->
+            <section class="py-16 bg-[#0A192F] text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+                    <h2 class="text-sm font-bold tracking-widest uppercase text-slate-400">Locations We Support</h2>
+                    <div class="flex flex-wrap justify-center gap-3 sm:gap-6 text-xs font-semibold tracking-wide">
+                        <span class="px-5 py-3 border border-slate-700 rounded-full bg-slate-900/40">Ontario</span>
+                        <span class="px-5 py-3 border border-slate-700 rounded-full bg-slate-900/40">Mississauga</span>
+                        <span class="px-5 py-3 border border-slate-700 rounded-full bg-slate-900/40">Brampton</span>
+                        <span class="px-5 py-3 border border-slate-700 rounded-full bg-slate-900/40">Toronto</span>
+                        <span class="px-5 py-3 border border-slate-700 rounded-full bg-slate-900/40">Surrey</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CALL TO ACTION BANNER -->
+            <section class="relative bg-slate-950 text-white overflow-hidden py-28">
+                <img src="assets/cta.png" alt="Office team photo"
+                    class="absolute inset-0 w-full h-full object-cover opacity-20">
+                <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 z-20 space-y-6">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Looking for new opportunities or
+                        hiring support?</h2>
+                    <p class="text-slate-400 text-sm max-w-md mx-auto">Connect with our team today.</p>
+                    <button onclick="switchTab('contact')"
+                        class="bg-white text-[#0A192F] px-8 py-3.5 rounded-xl text-sm font-bold hover:bg-slate-100 transition-colors inline-block shadow-lg">Contact
+                        Us</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= ABOUT US PAGE ================= -->
+        <div id="about" class="tab-content">
+            <section class="relative bg-slate-950 text-white py-24">
+                <img src="assets/aboutus.png" alt="Professional team meeting"
+                    class="absolute inset-0 w-full h-full object-cover opacity-20">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">About Us</h1>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div
+                    class="space-y-4 bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/60 shadow-sm text-slate-600 leading-relaxed text-sm">
+                    <p>Crestivo Talent is a recruitment and staffing support organization serving employers and job
+                        seekers across Ontario.</p>
+                    <p>Our team assists organizations with candidate sourcing, interview coordination, recruitment
+                        support, and hiring assistance. We work closely with employers to understand their needs and
+                        identify individuals who demonstrate professionalism, reliability, and strong communication
+                        skills.</p>
+                    <p>We believe recruitment should be straightforward and transparent. By maintaining clear
+                        communication and structured processes, we strive to create positive experiences for both
+                        employers and candidates.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="border border-slate-200/80 p-8 rounded-2xl bg-white shadow-sm space-y-4">
+                        <h3 class="text-lg font-bold text-[#0A192F]">Mission</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">To support employers in building strong teams
+                            while helping candidates access professional opportunities that encourage personal and
+                            career growth.</p>
+                    </div>
+                    <div class="border border-slate-200/80 p-8 rounded-2xl bg-white shadow-sm space-y-4">
+                        <h3 class="text-lg font-bold text-[#0A192F]">Values</h3>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-semibold text-slate-700">
+                            <div class="flex items-center space-x-2.5"><span
+                                    class="w-2 h-2 bg-[#0A192F] rounded-full"></span><span>Professionalism</span></div>
+                            <div class="flex items-center space-x-2.5"><span
+                                    class="w-2 h-2 bg-[#0A192F] rounded-full"></span><span>Transparency</span></div>
+                            <div class="flex items-center space-x-2.5"><span
+                                    class="w-2 h-2 bg-[#0A192F] rounded-full"></span><span>Relationships</span></div>
+                            <div class="flex items-center space-x-2.5"><span
+                                    class="w-2 h-2 bg-[#0A192F] rounded-full"></span><span>Opportunity</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMPORTANT NOTICE CALLED OUT -->
+                <div class="bg-[#0A192F] text-white p-8 rounded-2xl space-y-4 shadow-md">
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                            </path>
+                        </svg>
+                        <h4 class="text-xs uppercase font-extrabold tracking-widest text-slate-300">Important Notice
+                        </h4>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-200 font-medium list-disc list-inside pl-1">
+                        <li>We do not charge candidates any fees during the recruitment process.</li>
+                        <li>Employment opportunities are provided directly by independent client organizations.</li>
+                        <li>Training and onboarding are managed by the hiring employer.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= JOB SEEKERS PAGE ================= -->
+        <div id="job-seekers" class="tab-content">
+            <section class="relative bg-slate-950 text-white py-24">
+                <img src="assets/jobseek.png" alt="Candidate interview"
+                    class="absolute inset-0 w-full h-full object-cover opacity-20">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Job Seekers</h1>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200/60 shadow-sm space-y-6">
+                        <p class="text-slate-600 text-sm leading-relaxed">We assist candidates in connecting with
+                            opportunities offered by our client organizations and provide support throughout the
+                            recruitment process.</p>
+
+                        <div class="space-y-4">
+                            <h3 class="text-base font-bold text-[#0A192F]">What You Can Expect</h3>
+                            <ul class="space-y-3 text-xs text-slate-600">
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-2.5 text-[#0A192F] flex-shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg> Clear communication throughout recruitment</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-2.5 text-[#0A192F] flex-shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg> Structured interview coordination</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-2.5 text-[#0A192F] flex-shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg> Professional support from application to interview</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-2.5 text-[#0A192F] flex-shrink-0"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg> Opportunities with client organizations across Ontario</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-200 border border-slate-300/60 p-6 rounded-xl">
+                        <span
+                            class="text-[10px] font-extrabold tracking-widest text-[#0A192F] uppercase block mb-1.5">Applicant
+                            Notice</span>
+                        <p class="text-xs text-slate-700 leading-relaxed font-medium">There are no fees associated with
+                            applying, interviewing, or onboarding through opportunities supported by Crestivo Talent.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- APPLICATION TIMELINE STEPPER -->
+                <div class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/60 shadow-sm space-y-6">
+                    <h3 class="text-lg font-bold text-[#0A192F]">Application Process</h3>
+                    <div
+                        class="space-y-6 relative before:absolute before:left-[15px] before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
+                        <div class="flex items-center space-x-4 relative">
+                            <div
+                                class="w-8 h-8 bg-[#0A192F] text-white rounded-full flex items-center justify-center text-xs font-bold z-10">
+                                1</div>
+                            <span class="text-xs font-bold text-slate-700">Submit Application</span>
+                        </div>
+                        <div class="flex items-center space-x-4 relative">
+                            <div
+                                class="w-8 h-8 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center text-xs font-bold z-10">
+                                2</div>
+                            <span class="text-xs font-semibold text-slate-600">Application Review</span>
+                        </div>
+                        <div class="flex items-center space-x-4 relative">
+                            <div
+                                class="w-8 h-8 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center text-xs font-bold z-10">
+                                3</div>
+                            <span class="text-xs font-semibold text-slate-600">Candidate Screening</span>
+                        </div>
+                        <div class="flex items-center space-x-4 relative">
+                            <div
+                                class="w-8 h-8 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center text-xs font-bold z-10">
+                                4</div>
+                            <span class="text-xs font-semibold text-slate-600">Interview Coordination</span>
+                        </div>
+                        <div class="flex items-center space-x-4 relative">
+                            <div
+                                class="w-8 h-8 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center text-xs font-bold z-10">
+                                5</div>
+                            <span class="text-xs font-semibold text-slate-600">Client Interview</span>
+                        </div>
+                        <div class="flex items-center space-x-4 relative">
+                            <div
+                                class="w-8 h-8 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center text-xs font-bold z-10">
+                                6</div>
+                            <span class="text-xs font-semibold text-slate-600">Hiring Decision</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= EMPLOYERS PAGE ================= -->
+        <div id="employers" class="tab-content">
+            <section class="relative bg-slate-950 text-white py-24">
+                <img src="assets/employers-page-header.png" alt="Employer reviewing resumes"
+                    class="absolute inset-0 w-full h-full object-cover opacity-20">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Employers</h1>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div
+                    class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/60 shadow-sm text-center max-w-2xl mx-auto space-y-4">
+                    <p class="text-slate-600 text-sm leading-relaxed">We support organizations with candidate sourcing,
+                        recruitment coordination, and hiring assistance.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed">Our services help employers streamline recruitment
+                        while maintaining a professional candidate experience.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-base font-bold text-[#0A192F] text-center uppercase tracking-wider">Services Include
+                    </h3>
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                        <div
+                            class="p-5 border border-slate-200 bg-white shadow-sm rounded-xl text-xs font-semibold text-slate-700 flex items-center">
+                            <span class="w-2 h-2 bg-[#0A192F] rounded-full mr-3"></span>Candidate Sourcing
+                        </div>
+                        <div
+                            class="p-5 border border-slate-200 bg-white shadow-sm rounded-xl text-xs font-semibold text-slate-700 flex items-center">
+                            <span class="w-2 h-2 bg-[#0A192F] rounded-full mr-3"></span>Recruitment Coordination
+                        </div>
+                        <div
+                            class="p-5 border border-slate-200 bg-white shadow-sm rounded-xl text-xs font-semibold text-slate-700 flex items-center">
+                            <span class="w-2 h-2 bg-[#0A192F] rounded-full mr-3"></span>Initial Candidate Screening
+                        </div>
+                        <div
+                            class="p-5 border border-slate-200 bg-white shadow-sm rounded-xl text-xs font-semibold text-slate-700 flex items-center">
+                            <span class="w-2 h-2 bg-[#0A192F] rounded-full mr-3"></span>Interview Scheduling
+                        </div>
+                        <div
+                            class="p-5 border border-slate-200 bg-white shadow-sm rounded-xl text-xs font-semibold text-slate-700 flex items-center">
+                            <span class="w-2 h-2 bg-[#0A192F] rounded-full mr-3"></span>Hiring Support
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= OPPORTUNITIES PAGE ================= -->
+        <div id="opportunities" class="tab-content">
+            <section class="relative bg-slate-950 text-white py-24">
+                <img src="assets/opportunities-page-header.png" alt="Interview or discussion"
+                    class="absolute inset-0 w-full h-full object-cover opacity-20">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Opportunities</h1>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center space-y-4">
+                    <h2 class="text-2xl font-extrabold text-[#0A192F]">Current Opportunities</h2>
+                    <p class="text-slate-500 text-sm max-w-xl mx-auto">Crestivo Talent regularly supports client
+                        organizations that are expanding their teams. Availability varies based on client hiring
+                        requirements.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <div
+                        class="p-6 border border-slate-200 rounded-xl bg-white shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+                        <h4 class="font-bold text-sm text-[#0A192F]">Customer Service Representatives</h4>
+                        <span class="text-[10px] text-slate-400 mt-2 block uppercase font-bold tracking-wide">Ontario
+                            Client Roles</span>
+                    </div>
+                    <div
+                        class="p-6 border border-slate-200 rounded-xl bg-white shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+                        <h4 class="font-bold text-sm text-[#0A192F]">Customer Engagement Positions</h4>
+                        <span class="text-[10px] text-slate-400 mt-2 block uppercase font-bold tracking-wide">Ontario
+                            Client Roles</span>
+                    </div>
+                    <div
+                        class="p-6 border border-slate-200 rounded-xl bg-white shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+                        <h4 class="font-bold text-sm text-[#0A192F]">Client Support Roles</h4>
+                        <span class="text-[10px] text-slate-400 mt-2 block uppercase font-bold tracking-wide">Ontario
+                            Client Roles</span>
+                    </div>
+                    <div
+                        class="p-6 border border-slate-200 rounded-xl bg-white shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+                        <h4 class="font-bold text-sm text-[#0A192F]">Administrative Support Opportunities</h4>
+                        <span class="text-[10px] text-slate-400 mt-2 block uppercase font-bold tracking-wide">Ontario
+                            Client Roles</span>
+                    </div>
+                    <div
+                        class="p-6 border border-slate-200 rounded-xl bg-white shadow-sm sm:col-span-2 max-w-md w-full mx-auto flex flex-col justify-between hover:border-slate-300 transition-colors">
+                        <h4 class="font-bold text-sm text-[#0A192F]">Sales Support Positions</h4>
+                        <span class="text-[10px] text-slate-400 mt-2 block uppercase font-bold tracking-wide">Ontario
+                            Client Roles</span>
+                    </div>
+                </div>
+
+                <div class="text-center pt-6 max-w-md mx-auto space-y-4">
+                    <p class="text-xs text-slate-500 italic">Interested applicants are encouraged to apply through
+                        active postings or contact our team for additional information.</p>
+                    <button onclick="switchTab('contact')"
+                        class="bg-[#0A192F] text-white text-xs px-6 py-3 rounded-lg font-bold shadow-sm hover:bg-slate-800 transition-colors">Inquire
+                        Now</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= FAQ PAGE ================= -->
+        <div id="faq" class="tab-content">
+            <section class="py-16 bg-white border-b border-slate-200/60">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-3xl font-extrabold tracking-tight text-[#0A192F]">Frequently Asked Questions</h1>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="space-y-3">
+                    <!-- FAQ 1 -->
+                    <div class="border border-slate-200/80 rounded-xl bg-white shadow-sm overflow-hidden">
+                        <button onclick="toggleAccordion(1)"
+                            class="w-full p-5 text-left font-bold text-sm text-[#0A192F] flex justify-between items-center focus:outline-none">
+                            <span>Do applicants pay fees?</span>
+                            <svg id="icon-1" class="w-4 h-4 transform transition-transform text-slate-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="content-1" class="accordion-content">
+                            <p
+                                class="p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-50 bg-slate-50/50">
+                                No. Applicants are never charged fees during the recruitment process.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="border border-slate-200/80 rounded-xl bg-white shadow-sm overflow-hidden">
+                        <button onclick="toggleAccordion(2)"
+                            class="w-full p-5 text-left font-bold text-sm text-[#0A192F] flex justify-between items-center focus:outline-none">
+                            <span>Who is the employer?</span>
+                            <svg id="icon-2" class="w-4 h-4 transform transition-transform text-slate-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="content-2" class="accordion-content">
+                            <p
+                                class="p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-50 bg-slate-50/50">
+                                Successful candidates are employed directly by the client organization offering the
+                                opportunity.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="border border-slate-200/80 rounded-xl bg-white shadow-sm overflow-hidden">
+                        <button onclick="toggleAccordion(3)"
+                            class="w-full p-5 text-left font-bold text-sm text-[#0A192F] flex justify-between items-center focus:outline-none">
+                            <span>How will I be contacted?</span>
+                            <svg id="icon-3" class="w-4 h-4 transform transition-transform text-slate-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="content-3" class="accordion-content">
+                            <p
+                                class="p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-50 bg-slate-50/50">
+                                Candidates may be contacted by phone, email, or text message regarding application
+                                updates and interview scheduling.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 4 -->
+                    <div class="border border-slate-200/80 rounded-xl bg-white shadow-sm overflow-hidden">
+                        <button onclick="toggleAccordion(4)"
+                            class="w-full p-5 text-left font-bold text-sm text-[#0A192F] flex justify-between items-center focus:outline-none">
+                            <span>Are opportunities remote?</span>
+                            <svg id="icon-4" class="w-4 h-4 transform transition-transform text-slate-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="content-4" class="accordion-content">
+                            <p
+                                class="p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-50 bg-slate-50/50">
+                                Most opportunities supported by Crestivo Talent are in-person positions.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 5 -->
+                    <div class="border border-slate-200/80 rounded-xl bg-white shadow-sm overflow-hidden">
+                        <button onclick="toggleAccordion(5)"
+                            class="w-full p-5 text-left font-bold text-sm text-[#0A192F] flex justify-between items-center focus:outline-none">
+                            <span>Is training provided?</span>
+                            <svg id="icon-5" class="w-4 h-4 transform transition-transform text-slate-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="content-5" class="accordion-content">
+                            <p
+                                class="p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-50 bg-slate-50/50">
+                                Training requirements vary by employer and position.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 6 -->
+                    <div class="border border-slate-200/80 rounded-xl bg-white shadow-sm overflow-hidden">
+                        <button onclick="toggleAccordion(6)"
+                            class="w-full p-5 text-left font-bold text-sm text-[#0A192F] flex justify-between items-center focus:outline-none">
+                            <span>How long does the recruitment process take?</span>
+                            <svg id="icon-6" class="w-4 h-4 transform transition-transform text-slate-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="content-6" class="accordion-content">
+                            <p
+                                class="p-5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-50 bg-slate-50/50">
+                                Timelines vary depending on the employer and position.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= CONTACT PAGE ================= -->
+        <div id="contact" class="tab-content">
+            <section class="relative bg-slate-950 text-white py-24">
+                <img src="assets/contact-page-header.png" alt="Office building facade"
+                    class="absolute inset-0 w-full h-full object-cover opacity-20">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Contact Crestivo Talent</h1>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-5 gap-12">
+                <div class="md:col-span-2 space-y-6">
+                    <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm space-y-5">
+                        <div>
+                            <h4 class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">General
+                                Inquiries</h4>
+                            <a href="mailto:info@crestivotalent.ca"
+                                class="text-sm font-semibold text-[#0A192F] hover:underline">info@crestivotalent.ca</a>
+                        </div>
+                        <div>
+                            <h4 class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">Career
+                                Inquiries</h4>
+                            <a href="mailto:careers@crestivotalent.ca"
+                                class="text-sm font-semibold text-[#0A192F] hover:underline">careers@crestivotalent.ca</a>
+                        </div>
+                        <div>
+                            <h4 class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">
+                                Employer Services</h4>
+                            <a href="mailto:employers@crestivotalent.ca"
+                                class="text-sm font-semibold text-[#0A192F] hover:underline">employers@crestivotalent.ca</a>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm space-y-3 text-xs text-slate-600">
+                        <div>
+                            <h4 class="font-bold text-[#0A192F] mb-0.5">Location</h4>
+                            <p class="font-medium">Mississauga, Ontario</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#0A192F] mb-0.5">Business Hours</h4>
+                            <p class="font-medium">Monday – Friday</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- UPDATED INTERACTIVE CONTACT FORM CARD -->
+                <div class="md:col-span-3 bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <form class="space-y-4" id="executiveContactForm">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label
+                                    class="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5">Name</label>
+                                <input type="text" id="formName" required
+                                    class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:border-[#0A192F] bg-slate-50/50">
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5">Email</label>
+                                <input type="email" id="formEmail" required
+                                    class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:border-[#0A192F] bg-slate-50/50">
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5">Phone
+                                Number</label>
+                            <input type="tel" id="formPhone" required
+                                class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:border-[#0A192F] bg-slate-50/50">
+                        </div>
+                        <div>
+                            <label
+                                class="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5">Message</label>
+                            <textarea rows="4" id="formMessage" required
+                                class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:border-[#0A192F] bg-slate-50/50"></textarea>
+                        </div>
+                        <button type="button" onclick="triggerMailtoLink()"
+                            class="w-full bg-[#0A192F] text-white py-3.5 rounded-xl text-sm font-bold shadow-md hover:bg-slate-800 transition-colors block text-center">Send
+                            Message</button>
+                    </form>
+                </div>
+
+
+                <!-- INPUT FORMS -->
+                <div class="md:col-span-3 bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <form class="space-y-4" onsubmit="event.preventDefault();">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label
+                                    class="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5">Name</label>
+                                <input type="text"
+                                    class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:border-[#0A192F] bg-slate-50/50">
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5">Email</label>
+                                <input type="email"
+                                    class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:border-[#0A192F] bg-slate-50/50">
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5">Phone
+                                Number</label>
+                            <input type="tel"
+                                class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:border-[#0A192F] bg-slate-50/50">
+                        </div>
+                        <div>
+                            <label
+                                class="block text-[10px] font-bold text-slate-500 uppercase tracking-wide mb-1.5">Message</label>
+                            <textarea rows="4"
+                                class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:outline-none focus:border-[#0A192F] bg-slate-50/50"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-[#0A192F] text-white py-3.5 rounded-xl text-sm font-bold shadow-md hover:bg-slate-800 transition-colors">Send
+                            Message</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- PREMIUM CORPORATE FOOTER -->
+    <footer class="bg-white border-t border-slate-200/80 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div class="space-y-3">
+                <span class="text-xl font-extrabold text-[#0A192F] tracking-tight block">CRESTIVO TALENT</span>
+                <p class="text-xs text-slate-400 font-medium leading-relaxed">Supporting Employers. Empowering
+                    Candidates.</p>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-4">Quick Links</h4>
+                <div class="grid grid-cols-2 gap-2 text-xs font-semibold text-slate-600">
+                    <button onclick="switchTab('home')" class="text-left hover:text-[#0A192F]">Home</button>
+                    <button onclick="switchTab('about')" class="text-left hover:text-[#0A192F]">About Us</button>
+                    <button onclick="switchTab('job-seekers')" class="text-left hover:text-[#0A192F]">Job
+                        Seekers</button>
+                    <button onclick="switchTab('employers')" class="text-left hover:text-[#0A192F]">Employers</button>
+                    <button onclick="switchTab('opportunities')"
+                        class="text-left hover:text-[#0A192F]">Opportunities</button>
+                    <button onclick="switchTab('faq')" class="text-left hover:text-[#0A192F]">FAQ</button>
+                    <button onclick="switchTab('contact')"
+                        class="text-left hover:text-[#0A192F] col-span-2">Contact</button>
+                </div>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 font-semibold">
+                <h4 class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-4">Contact Info</h4>
+                <p>Email: <a href="mailto:info@crestivotalent.ca"
+                        class="text-[#0A192F] hover:underline">info@crestivotalent.ca</a></p>
+                <p>Location: Mississauga, Ontario</p>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-100 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] font-semibold text-slate-400 space-y-2 sm:space-y-0">
+            <span>&copy; 2026 Crestivo Talent. All Rights Reserved.</span>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-slate-600">Privacy Policy</a>
+                <a href="#" class="hover:text-slate-600">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE ENGINE -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('data-tab') === tabId) {
+                    link.classList.add('text-[#0A192F]');
+                } else {
+                    link.classList.remove('text-[#0A192F]');
+                }
+            });
+
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.classList.remove('rotate-180');
+            } else {
+                content.classList.add('open');
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        function triggerMailtoLink() {
+            // Fetch inputs safely
+            const name = document.getElementById('formName').value.trim();
+            const email = document.getElementById('formEmail').value.trim();
+            const phone = document.getElementById('formPhone').value.trim();
+            const message = document.getElementById('formMessage').value.trim();
+
+            // Basic validation helper context check
+            if (!name || !email || !phone || !message) {
+                alert('Please fill out all fields before sending your message.');
+                return;
+            }
+
+            // Structure clean corporate email body parameters safely
+            const targetEmail = "info@crestivotalent.ca";
+            const subject = encodeURIComponent(`Crestivo Talent Web Inquiry from ${name}`);
+
+            const bodyContent = `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${phone}\n\n` +
+                `Message:\n${message}`;
+
+            const body = encodeURIComponent(bodyContent);
+
+            // Execute direct user client prompt launch safely
+            window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+        }
+
+    </script>
+</body>
+
+</html>
